@@ -6,7 +6,7 @@ import { WebView } from 'react-native-webview';
 import { AppSettingsContext } from "../contexts/AppSettingsContext";
 interface CameraViewProps {
     navigation: NavigationProp<ParamListBase>,
-    route: RouteProp<{params: {cam:string}}, 'params'>
+    route: RouteProp<{params: {url:string}}, 'params'>
 }
 
 const CameraView = ({navigation, route}:CameraViewProps) => {
@@ -19,7 +19,7 @@ const CameraView = ({navigation, route}:CameraViewProps) => {
                 style={{width: '100%', height: '100%'}} 
                 onLongPress={() => navigation.goBack()}>
                 <WebView 
-                    source={{ uri: route.params.cam === 'front' ? appsettingscontext.UrlToFrontCamViewStreamingFile : appsettingscontext.UrlToRearCamViewStreamingFile }} 
+                    source={{ uri: route.params.url}} 
                     style={{ height: 500 }}/>
 
             </Pressable>

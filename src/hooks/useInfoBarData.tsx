@@ -14,7 +14,21 @@ interface useInfoBarDataResponse {
     isLoading: boolean,
     axiosOperation: (params:object) => void
 }
-export const useInfoBarData = ():useInfoBarDataResponse => {
+
+interface useDatabaseHeaderDataResponse {
+    data: null | {
+        hdd_usage: number,
+        hdd_free: number,
+        hdd_video_usage: number,
+        hdd_plates_usage: number,
+        ram_usage: number,
+        ram_free: number
+
+    }
+    isLoading: boolean,
+    axiosOperation: (params:object) => void
+}
+export const useInfoBarData = ():useInfoBarDataResponse | useDatabaseHeaderDataResponse => {
     const [data, setData] = React.useState(null);
     const [isLoading, setIsLoading] = React.useState(false);
     const axiosOperation = async (params:any) => {
